@@ -1,0 +1,38 @@
+.departements-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.add-form {
+  margin-bottom: 20px;
+}
+
+.add-form input {
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.add-form button {
+  padding: 5px 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+.message {
+  color: green;
+  margin-bottom: 10px;
+}

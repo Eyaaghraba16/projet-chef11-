@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Gestion des Événements Institutionnels</h2>
+
+  <form (ngSubmit)="ajouter()" class="mb-3">
+    <input type="text" [(ngModel)]="newEvenement.titre" name="titre" placeholder="Titre" required />
+    <input type="date" [(ngModel)]="newEvenement.date" name="date" required />
+    <input type="text" [(ngModel)]="newEvenement.description" name="description" placeholder="Description" />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <table class="table" *ngIf="evenements.length > 0">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let evt of evenements">
+        <td>{{ evt.titre }}</td>
+        <td>{{ evt.date | date }}</td>
+        <td>{{ evt.description }}</td>
+        <td>
+          <button (click)="supprimer(evt.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="evenements.length === 0">Aucun événement pour le moment.</div>
+</div>

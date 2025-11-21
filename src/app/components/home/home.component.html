@@ -1,0 +1,153 @@
+<div class="home-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo-section">
+        <div class="logo">
+          <div class="logo-icon">🎓</div>
+          <span class="logo-text">ISET Tozeur</span>
+        </div>
+      </div>
+      
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link active">Accueil</a>
+        <a href="#features" class="nav-link" (click)="scrollToFeatures()">Fonctionnalités</a>
+        <a href="#events" class="nav-link">Événements</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      
+      <button class="btn-login" (click)="goToLogin()">
+        Connexion / S'inscrire
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-background">
+      <div class="gradient-overlay"></div>
+      <div class="animated-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-line">Plateforme Universitaire</span>
+          <span class="title-accent">Moderne & Intuitive</span>
+        </h1>
+        <p class="hero-description">
+          Une solution complète pour la gestion universitaire — connectez étudiants, 
+          enseignants et administration dans un environnement numérique unifié.
+        </p>
+        
+        <div class="hero-buttons">
+          <button class="btn-primary" (click)="goToRegister()">
+            Commencer maintenant
+          </button>
+          <button class="btn-secondary" (click)="scrollToFeatures()">
+            En savoir plus
+          </button>
+        </div>
+        
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-number">12k+</div>
+            <div class="stat-label">Utilisateurs actifs</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">120+</div>
+            <div class="stat-label">Enseignants</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4200+</div>
+            <div class="stat-label">Étudiants</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <div class="image-card">
+          <div class="image-placeholder">
+            <div class="university-icon">🏛️</div>
+            <p>Institut Supérieur des Études Technologiques</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="section-container">
+      <h2 class="section-title">Fonctionnalités clés</h2>
+      <p class="section-subtitle">Découvrez les outils qui simplifient la vie universitaire</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">👨‍🎓</div>
+          <h3 class="feature-title">Gestion des étudiants</h3>
+          <p class="feature-description">
+            Inscription, emplois du temps, notes et absences centralisés 
+            pour une gestion efficace de la vie étudiante.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">👨‍🏫</div>
+          <h3 class="feature-title">Espace enseignants</h3>
+          <p class="feature-description">
+            Planification des cours, évaluations et communication 
+            simplifiée avec les étudiants et l'administration.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3 class="feature-title">Tableau de bord</h3>
+          <p class="feature-description">
+            Vue d'ensemble en temps réel pour les administrateurs 
+            avec statistiques et rapports détaillés.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <h3 class="feature-title">Emploi du temps</h3>
+          <p class="feature-description">
+            Gestion intelligente des horaires avec notifications 
+            automatiques et synchronisation en temps réel.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3 class="feature-title">Notes & Évaluations</h3>
+          <p class="feature-description">
+            Système complet de notation avec historique 
+            et calcul automatique des moyennes.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3 class="feature-title">Messagerie</h3>
+          <p class="feature-description">
+            Communication directe entre tous les membres 
+            de la communauté universitaire.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Access Floating Button -->
+  <button class="quick-access-btn" (click)="goToLogin()" title="Accès rapide">
+    <span class="quick-access-icon">⚡</span>
+    <span class="quick-access-text">Accès rapide</span>
+  </button>
+</div>
+

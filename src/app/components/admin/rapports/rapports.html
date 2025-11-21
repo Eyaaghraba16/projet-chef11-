@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Rapports Institutionnels</h2>
+
+  <!-- Affichage du loader -->
+  <div *ngIf="loading" class="loading">Chargement des rapports...</div>
+
+  <!-- Tableau des rapports -->
+  <table *ngIf="!loading && rapports.length > 0" class="rapports-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rapport of rapports">
+        <td>{{ rapport.id }}</td>
+        <td>{{ rapport.type }}</td>
+        <td>{{ rapport.date | date:'shortDate' }}</td>
+        <td>
+          <button class="btn pdf" (click)="downloadPdf(rapport.id)">PDF</button>
+          <button class="btn csv" (click)="downloadCsv(rapport.id)">CSV</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Message si aucun rapport -->
+  <div *ngIf="!loading && rapports.length === 0" class="no-data">
+    Aucun rapport disponible.
+  </div>
+</div>

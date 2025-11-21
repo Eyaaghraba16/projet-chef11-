@@ -1,0 +1,38 @@
+<div class="departements-container">
+  <h2>📚 Gestion des départements</h2>
+
+  <p class="message">{{ message }}</p>
+
+  <form (ngSubmit)="ajouterDepartement()" class="add-form">
+    <label>
+      Nom du département :
+      <input [(ngModel)]="nom" name="nom" required />
+    </label>
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <div *ngIf="departements.length; else vide">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dep of departements">
+          <td>{{ dep.id }}</td>
+          <td>{{ dep.nom }}</td>
+          <td>
+            <button (click)="supprimerDepartement(dep.id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #vide>
+    <p>Aucun département trouvé.</p>
+  </ng-template>
+</div>

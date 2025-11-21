@@ -1,0 +1,75 @@
+<div class="notes-container">
+  <h2>📊 Mes Notes</h2>
+
+  <div *ngIf="loading" class="loading">Chargement des notes...</div>
+
+  <div *ngIf="!loading">
+    <!-- Statistiques générales -->
+    <div class="stats-section">
+      <div class="stat-card moyenne-card">
+        <div class="stat-label">Moyenne Générale</div>
+        <div class="moyenne-value" [ngClass]="getNoteClass(moyenneGenerale)">
+          {{ moyenneGenerale.toFixed(2) }}/20
+        </div>
+        <div class="moyenne-label">{{ getNoteLabel(moyenneGenerale) }}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ notes.length }}</div>
+        <div class="stat-label">Total des notes</div>
+      </div>
+    </div>
+
+    <!-- Liste des notes par matière -->
+    <div class="notes-section" *ngIf="notes.length > 0; else noNotes">
+      <h3>Détail des notes</h3>
+      <div class="notes-list">
+        <div *ngFor="let note of notes" class="note-card" [ngClass]="getNoteClass(note.note)">
+          <div class="note-header">
+            <div class="matiere-name">{{ note.matiere }}</div>
+            <div class="note-badge" [ngClass]="getNoteClass(note.note)">
+              {{ note.note }}/20
+            </div>
+          </div>
+          <div class="note-details">
+            <div class="detail-item">
+              <span class="label">Type :</span>
+              <span class="value">{{ note.type }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Coefficient :</span>
+              <span class="value">{{ note.coefficient }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Appréciation :</span>
+              <span class="value" [ngClass]="getNoteClass(note.note)">
+                {{ getNoteLabel(note.note) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graphique de barres simple -->
+      <div class="chart-section">
+        <h3>Répartition des notes</h3>
+        <div class="bar-chart">
+          <div *ngFor="let note of notes" class="bar-item">
+            <div class="bar-label">{{ note.matiere }}</div>
+            <div class="bar-container">
+              <div class="bar" [ngClass]="getNoteClass(note.note)" [style.width.%]="(note.note / 20) * 100">
+                <span class="bar-value">{{ note.note }}/20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noNotes>
+      <div class="no-data">
+        <p>📝 Aucune note disponible</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+

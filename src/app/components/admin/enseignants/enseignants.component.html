@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h2>Gestion des Enseignants</h2>
+
+  <form (ngSubmit)="ajouter()">
+    <input type="text" placeholder="Nom" [(ngModel)]="newEnseignant.nom" name="nom" required />
+    <input type="text" placeholder="Prénom" [(ngModel)]="newEnseignant.prenom" name="prenom" required />
+    <input type="email" placeholder="Email" [(ngModel)]="newEnseignant.email" name="email" required />
+    <input type="text" placeholder="Spécialité" [(ngModel)]="newEnseignant.specialite" name="specialite" required />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Spécialité</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let e of enseignants">
+        <td>{{ e.nom }}</td>
+        <td>{{ e.prenom }}</td>
+        <td>{{ e.email }}</td>
+        <td>{{ e.specialite }}</td>
+        <td>
+          <button class="delete" (click)="supprimer(e.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

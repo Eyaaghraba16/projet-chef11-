@@ -1,0 +1,43 @@
+<div class="notifications-container">
+  <div class="header-section">
+    <h2>🔔 Mes Notifications</h2>
+    <div class="header-actions" *ngIf="notificationsNonLues > 0">
+      <span class="badge-non-lues">{{ notificationsNonLues }} non lue(s)</span>
+      <button class="btn-marquer-toutes" (click)="marquerToutesCommeLues()">
+        Tout marquer comme lu
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">Chargement des notifications...</div>
+
+  <div *ngIf="!loading">
+    <div class="notifications-list" *ngIf="notifications.length > 0; else noNotifications">
+      <div *ngFor="let notification of notifications" 
+           class="notification-card" 
+           [ngClass]="getNotificationClasses(notification)"
+           (click)="marquerCommeLu(notification.id)">
+        <div class="notification-icon" [ngClass]="getTypeClass(notification.type)">
+          {{ getTypeIcon(notification.type) }}
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <h3 class="notification-titre">{{ notification.titre }}</h3>
+            <span *ngIf="!notification.lu" class="badge-nouveau">Nouveau</span>
+          </div>
+          <p class="notification-message">{{ notification.message }}</p>
+          <div class="notification-footer">
+            <span class="notification-date">{{ notification.date | date:'dd/MM/yyyy à HH:mm' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noNotifications>
+      <div class="no-data">
+        <p>✅ Aucune notification</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+

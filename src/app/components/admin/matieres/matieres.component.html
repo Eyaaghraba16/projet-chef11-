@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h2>Gestion des Matières</h2>
+
+  <form (ngSubmit)="ajouter()">
+    <input type="text" placeholder="Nom" [(ngModel)]="newMatiere.nom" name="nom" required />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let m of matieres">
+        <td>{{ m.nom }}</td>
+        <td>
+          <button class="delete" (click)="supprimer(m.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

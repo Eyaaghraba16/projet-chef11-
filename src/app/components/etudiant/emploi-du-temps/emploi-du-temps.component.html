@@ -1,0 +1,45 @@
+<div class="emploi-container">
+  <h2>📅 Gestion des Emplois du Temps</h2>
+
+  <div *ngIf="message" class="message">{{ message }}</div>
+
+  <form (ngSubmit)="ajouterEmploi()">
+    <input type="text" [(ngModel)]="matiere" name="matiere" placeholder="Matière" required />
+    <input type="text" [(ngModel)]="enseignant" name="enseignant" placeholder="Enseignant" required />
+    <input type="text" [(ngModel)]="salle" name="salle" placeholder="Salle" required />
+    <input type="text" [(ngModel)]="jour" name="jour" placeholder="Jour" required />
+    <input type="text" [(ngModel)]="heure" name="heure" placeholder="Heure" required />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <table *ngIf="emplois.length > 0; else vide">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Matière</th>
+        <th>Enseignant</th>
+        <th>Salle</th>
+        <th>Jour</th>
+        <th>Heure</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of emplois">
+        <td>{{ e.id }}</td>
+        <td>{{ e.matiere }}</td>
+        <td>{{ e.enseignant }}</td>
+        <td>{{ e.salle }}</td>
+        <td>{{ e.jour }}</td>
+        <td>{{ e.heure }}</td>
+        <td>
+          <button (click)="supprimerEmploi(e.id)">🗑️ Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #vide>
+    <p>Aucun emploi du temps trouvé.</p>
+  </ng-template>
+</div>

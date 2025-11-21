@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h2>Gestion des Salles</h2>
+
+  <form (ngSubmit)="ajouter()">
+    <input type="text" placeholder="Nom Salle" [(ngModel)]="newSalle.nom" name="nom" required />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let s of salles">
+        <td>{{ s.nom }}</td>
+        <td><button class="delete" (click)="supprimer(s.id)">Supprimer</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

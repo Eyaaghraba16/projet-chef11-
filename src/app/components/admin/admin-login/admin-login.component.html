@@ -1,0 +1,15 @@
+﻿<div class="admin-login-container">
+  <h1>Espace Administratif</h1>
+  <p>Connexion rÃ©servÃ©e au personnel administratif.</p>
+
+  <form (ngSubmit)="onLogin()">
+    <label for="login">Email ou login</label>
+    <input id="login" type="text" [(ngModel)]="loginOrEmail" name="login" placeholder="admin@universite.com" />
+
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" [(ngModel)]="password" name="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" />
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Connexion...' : 'Se connecter' }}</button>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>

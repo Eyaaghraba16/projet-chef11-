@@ -1,0 +1,169 @@
+.emploi-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.header-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-section h2 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+.info-section {
+  display: flex;
+  gap: 2rem;
+  color: #666;
+}
+
+.info-section p {
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.table-container {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.emploi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.emploi-table th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #ddd;
+}
+
+.time-column {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 120px;
+}
+
+.time-cell {
+  background: #f8f9fa;
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-weight: 600;
+}
+
+.heure-debut {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.heure-fin {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.emploi-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  vertical-align: top;
+  min-height: 80px;
+  position: relative;
+}
+
+.emploi-table td.highlight {
+  background: #fff9e6;
+}
+
+.cours-cell {
+  padding: 0.75rem;
+  background: white;
+  border-radius: 5px;
+  border-left: 4px solid #667eea;
+  min-height: 70px;
+}
+
+.matiere {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.enseignant {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.salle {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.empty-cell {
+  text-align: center;
+  color: #ccc;
+  padding: 1rem;
+}
+
+.footer-section {
+  margin-top: 2rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.institution {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.departement {
+  font-style: italic;
+}
+
+@media (max-width: 968px) {
+  .emploi-container {
+    padding: 1rem;
+  }
+
+  .emploi-table {
+    font-size: 0.8rem;
+  }
+
+  .time-column {
+    width: 100px;
+  }
+
+  .cours-cell {
+    padding: 0.5rem;
+  }
+
+  .matiere, .enseignant, .salle {
+    font-size: 0.75rem;
+  }
+}
+

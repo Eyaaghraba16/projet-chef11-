@@ -1,0 +1,66 @@
+<div class="container">
+  <h2>Gestion des Étudiants</h2>
+
+  <!-- Formulaire d'ajout -->
+  <div class="form-section">
+    <h3>Ajouter un étudiant</h3>
+    <form (ngSubmit)="ajouter()" class="form">
+      <div class="form-group">
+        <label>Nom *</label>
+        <input type="text" [(ngModel)]="newEtudiant.nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label>Prénom *</label>
+        <input type="text" [(ngModel)]="newEtudiant.prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" [(ngModel)]="newEtudiant.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label>Numéro étudiant</label>
+        <input type="text" [(ngModel)]="newEtudiant.numeroEtudiant" name="numeroEtudiant">
+      </div>
+      <div class="form-group">
+        <label>Département</label>
+        <input type="text" [(ngModel)]="newEtudiant.departement" name="departement">
+      </div>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+  </div>
+
+  <!-- Liste des étudiants -->
+  <div class="list-section">
+    <h3>Liste des étudiants ({{ etudiants.length }})</h3>
+    <div *ngIf="etudiants.length === 0" class="no-data">Aucun étudiant enregistré.</div>
+    <div class="table-container" *ngIf="etudiants.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Numéro étudiant</th>
+            <th>Département</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let etudiant of etudiants">
+            <td>{{ etudiant.id }}</td>
+            <td>{{ etudiant.nom }}</td>
+            <td>{{ etudiant.prenom }}</td>
+            <td>{{ etudiant.email }}</td>
+            <td>{{ etudiant.numeroEtudiant || '-' }}</td>
+            <td>{{ etudiant.departement || '-' }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="supprimer(etudiant.id)">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
