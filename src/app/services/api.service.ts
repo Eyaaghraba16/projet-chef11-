@@ -128,24 +128,6 @@ export class ApiService {
   }
 
   // ============================================================
-  // SPECIALITES / NIVEAUX / GROUPES
-  // ============================================================
-  getSpecialites(params: { departementId?: number } = {}): Observable<any[]> {
-    const query = params.departementId ? `?departementId=${params.departementId}` : '';
-    return this.http.get<any[]>(`${this.apiUrl}/specialites${query}`, { headers: this.getHeaders() });
-  }
-
-  getNiveaux(params: { specialiteId?: number } = {}): Observable<any[]> {
-    const query = params.specialiteId ? `?specialiteId=${params.specialiteId}` : '';
-    return this.http.get<any[]>(`${this.apiUrl}/niveaux${query}`, { headers: this.getHeaders() });
-  }
-
-  getGroupes(params: { niveauId?: number } = {}): Observable<any[]> {
-    const query = params.niveauId ? `?niveauId=${params.niveauId}` : '';
-    return this.http.get<any[]>(`${this.apiUrl}/groupes${query}`, { headers: this.getHeaders() });
-  }
-
-  // ============================================================
   // MATIERES
   // ============================================================
   getMatieres(): Observable<any[]> {

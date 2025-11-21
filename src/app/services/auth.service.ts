@@ -67,17 +67,41 @@ export class AuthService {
   }
 
   // ===================== REGISTER =======================
-  register(email: string, mot_de_passe: string, nom: string, prenom: string, role: string): Observable<any> {
+  register(payload: {
+    email: string;
+    mot_de_passe: string;
+    nom: string;
+    prenom: string;
+    role: string;
+    departement?: string;
+    specialite?: string;
+    niveau?: string;
+  }): Observable<any> {
 
-    const login = email.split('@')[0].trim().toLowerCase();
-
-    return this.http.post(`${this.apiUrl}/register`, {
-      login,
+    const {
       email,
       mot_de_passe,
       nom,
       prenom,
-      role: role.trim().toLowerCase()
+      role,
+      departement,
+      specialite,
+      niveau
+    } = payload;
+
+    const normalizedEmail = email.trim().toLowerCase();
+    const login = normalizedEmail.split('@')[0];
+
+    return this.http.post(`${this.apiUrl}/register`, {
+      login,
+      email: normalizedEmail,
+      mot_de_passe,
+      nom: nom.trim(),
+      prenom: prenom.trim(),
+      role: role.trim().toLowerCase(),
+      departement: departement?.trim() || null,
+      specialite: specialite?.trim() || null,
+      niveau: niveau?.trim() || null
     });
   }
 

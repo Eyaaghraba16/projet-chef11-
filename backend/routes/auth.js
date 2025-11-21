@@ -9,13 +9,35 @@ const JWT_SECRET = 'votre_cle_secrete_changez_moi';
 // ==================== INSCRIPTION ====================
 router.post('/register', async (req, res) => {
   try {
-    const { nom, prenom, email, mot_de_passe, role } = req.body;
-    const login = email.split('@')[0].trim().toLowerCase();
+    const {
+      nom,
+      prenom,
+      email,
+      mot_de_passe,
+      role,
+      departement,
+      specialite,
+      niveau
+    } = req.body;
+
+    const normalizedEmail = email.trim().toLowerCase();
+    const normalizedRole = role.trim().toLowerCase();
+    const login = normalizedEmail.split('@')[0];
+
+    const departementValue = departement?.trim();
+    const specialiteValue = specialite?.trim();
+    const niveauValue = niveau?.trim();
+
+    if (normalizedRole === 'etudiant') {
+      if (!departementValue || !specialiteValue || !niveauValue) {
+        return res.status(400).json({ message: 'Département, spécialité et niveau sont requis pour un étudiant' });
+      }
+    }
 
     // Vérifier si l'utilisateur existe déjà
     const [existingUser] = await pool.query(
       'SELECT * FROM utilisateurs WHERE LOWER(email) = ? OR LOWER(login) = ?',
-      [email.trim().toLowerCase(), login]
+      [normalizedEmail, login]
     );
 
     if (existingUser.length > 0) {
@@ -29,19 +51,19 @@ router.post('/register', async (req, res) => {
     const [result] = await pool.query(
       `INSERT INTO utilisateurs (nom, prenom, email, login, mot_de_passe, role, actif)
        VALUES (?, ?, ?, ?, ?, ?, 1)`,
-      [nom, prenom, email.trim().toLowerCase(), login, hashedPassword, role]
+      [nom, prenom, normalizedEmail, login, hashedPassword, normalizedRole]
     );
 
     const userId = result.insertId;
 
     // Insertion selon le rôle
-    if (role === 'etudiant') {
+    if (normalizedRole === 'etudiant') {
       await pool.query(
-        `INSERT INTO etudiants (id_utilisateur, id_groupe, date_creation)
-         VALUES (?, 1, NOW())`,
-        [userId]
+        `INSERT INTO etudiants (id_utilisateur, departement, specialite, niveau, id_groupe, date_creation)
+         VALUES (?, ?, ?, ?, 1, NOW())`,
+        [userId, departementValue, specialiteValue, niveauValue]
       );
-    } else if (role === 'enseignant') {
+    } else if (normalizedRole === 'enseignant') {
       await pool.query(
         `INSERT INTO enseignants (id_utilisateur, id_departement, date_creation)
          VALUES (?, 1, NOW())`,

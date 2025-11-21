@@ -10,9 +10,6 @@ import { RegisterComponent } from './components/register/register.component';
 // Dashboard
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
-// Admin login
-import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
-
 // Admin
 import { DepartementsComponent } from './components/admin/departements.component';
 import { EnseignantsComponent } from './components/admin/enseignants/enseignants.component';
@@ -42,7 +39,6 @@ export const routes: Routes = [
   // ---------------- AUTH ----------------
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'admin/login', component: AdminLoginComponent },
 
   // -------------- DASHBOARD --------------
   {

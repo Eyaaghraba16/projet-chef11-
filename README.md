@@ -53,13 +53,6 @@ npm start
 
 Le backend sera accessible sur `http://localhost:3000`
 
-### Base de données MySQL
-
-1. Créez une base `gestion_universitaire`.
-2. Importez votre dump principal puis le fichier `backend/sql/rapports_table.sql` pour ajouter la table `rapports` et quelques données d'exemple.
-3. Mettez à jour `backend/db.js` si vos identifiants MySQL diffèrent.
-4. Les comptes administratifs sont créés directement en base (`utilisateurs.role = 'administratif'`). Les comptes générés automatiquement via le back-office reçoivent par défaut le mot de passe `Admin@123` (à modifier après la première connexion).
-
 ## Comptes de test
 
 Pour tester l'application, vous devez d'abord créer un compte via la page d'inscription.
@@ -113,5 +106,3 @@ Rôles disponibles:
 - JWT (authentification)
 - bcryptjs (hashage de mots de passe)
 - CORS
-
-
