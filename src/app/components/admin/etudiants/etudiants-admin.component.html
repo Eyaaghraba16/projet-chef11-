@@ -1,0 +1,105 @@
+<div class="container">
+  <h2>Gestion des Étudiants</h2>
+
+  <!-- Formulaire d'ajout -->
+  <div class="form-section">
+    <h3>Ajouter un étudiant</h3>
+    <form (ngSubmit)="ajouter()" class="form">
+      <div class="form-group">
+        <label>Nom *</label>
+        <input type="text" [(ngModel)]="newEtudiant.nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label>Prénom *</label>
+        <input type="text" [(ngModel)]="newEtudiant.prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" [(ngModel)]="newEtudiant.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label>Mot de passe (optionnel)</label>
+        <input type="password" [(ngModel)]="newEtudiant.mot_de_passe" name="mot_de_passe">
+      </div>
+      <div class="form-group">
+        <label>Département *</label>
+        <select [(ngModel)]="newEtudiant.departement" name="departement" (change)="onDepartementChange()" required>
+          <option [value]="null">Sélectionner un département</option>
+          <option *ngFor="let d of departements" [value]="d.nom">{{ d.nom }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Spécialité (optionnel - sauf pour 1ère année)</label>
+        <select [(ngModel)]="newEtudiant.id_specialite" name="id_specialite" (change)="onSpecialiteChange()" [disabled]="!newEtudiant.departement">
+          <option [value]="null">Aucune (1ère année - Tranc commun)</option>
+          <option *ngFor="let s of specialites" [value]="s.id">{{ s.nom }}</option>
+        </select>
+        <small *ngIf="!newEtudiant.departement" style="color: #666;">Sélectionnez d'abord un département</small>
+        <small *ngIf="newEtudiant.departement && specialites.length === 0" style="color: #666;">Aucune spécialité disponible pour ce département</small>
+      </div>
+      <div class="form-group">
+        <label>Groupe *</label>
+        <select [(ngModel)]="newEtudiant.id_groupe" name="id_groupe" required [disabled]="!newEtudiant.departement">
+          <option [value]="null">Sélectionner un groupe</option>
+          <option *ngFor="let g of groupes" [value]="g.id">{{ g.nom }} {{ g.niveau ? '(' + g.niveau + ')' : '' }}</option>
+        </select>
+        <small *ngIf="!newEtudiant.departement" style="color: #666;">Sélectionnez d'abord un département</small>
+        <small *ngIf="newEtudiant.departement && groupes.length === 0" style="color: #666;">Aucun groupe disponible pour cette spécialité</small>
+        <small *ngIf="newEtudiant.departement && newEtudiant.id_specialite && groupes.length > 0" style="color: #666;">{{ groupes.length }} groupe(s) disponible(s) pour cette spécialité</small>
+      </div>
+      <div class="form-group">
+        <label>Niveau</label>
+        <input type="text" [(ngModel)]="newEtudiant.niveau" name="niveau" placeholder="Ex: L1, L2, etc.">
+      </div>
+      <div class="form-group">
+        <label>Numéro étudiant</label>
+        <input type="text" [(ngModel)]="newEtudiant.numero_etudiant" name="numero_etudiant">
+      </div>
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="text" [(ngModel)]="newEtudiant.telephone" name="telephone">
+      </div>
+      <div class="form-group">
+        <label>Date de naissance</label>
+        <input type="date" [(ngModel)]="newEtudiant.date_naissance" name="date_naissance">
+      </div>
+      <p class="message" *ngIf="message">{{ message }}</p>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+  </div>
+
+  <!-- Liste des étudiants -->
+  <div class="list-section">
+    <h3>Liste des étudiants ({{ etudiants.length }})</h3>
+    <div *ngIf="etudiants.length === 0" class="no-data">Aucun étudiant enregistré.</div>
+    <div class="table-container" *ngIf="etudiants.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Numéro étudiant</th>
+            <th>Département</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let etudiant of etudiants">
+            <td>{{ etudiant.id }}</td>
+            <td>{{ etudiant.nom }}</td>
+            <td>{{ etudiant.prenom }}</td>
+            <td>{{ etudiant.email }}</td>
+            <td>{{ etudiant.numeroEtudiant || '-' }}</td>
+            <td>{{ etudiant.departement || '-' }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="supprimer(etudiant.id)">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

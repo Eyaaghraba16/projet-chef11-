@@ -1,0 +1,136 @@
+/* ======== GLOBAL LAYOUT ======== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #003366, #0066cc);
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ======== CARD ======== */
+.login-card {
+  background: #ffffff;
+  width: 420px;
+  padding: 35px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.login-card h1 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+/* ======== FORM GROUP ======== */
+form div {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #003366;
+}
+
+input {
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 6px rgba(0, 102, 204, 0.3);
+}
+
+/* ======== BUTTON ======== */
+button {
+  width: 100%;
+  padding: 13px;
+  background-color: #0066cc;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+
+button:hover {
+  background-color: #004c99;
+}
+
+button:disabled {
+  background-color: #7faeda;
+  cursor: not-allowed;
+}
+
+/* ======== MESSAGES ======== */
+.error {
+  background: #ffdddd;
+  color: #d10000;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-left: 4px solid #d10000;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ======== LINK SECTION ======== */
+p {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+  color: #444;
+}
+
+p a {
+  color: #0066cc;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/* ======== ANIMATION ======== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+    padding: 25px 20px;
+  }
+}

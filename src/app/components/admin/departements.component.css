@@ -1,0 +1,161 @@
+/* ======== GLOBAL LAYOUT ======== */
+.departements-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* ======== FORM STYLES ======== */
+.add-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+  animation: fadeIn 0.6s ease-in-out;
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+}
+
+.add-form input {
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+  flex: 1;
+}
+
+.add-form input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 6px rgba(0, 102, 204, 0.3);
+}
+
+.add-form button {
+  padding: 12px 24px;
+  background-color: #0066cc;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  white-space: nowrap;
+}
+
+.add-form button:hover {
+  background-color: #004c99;
+}
+
+/* ======== TABLE STYLES ======== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+th {
+  background: #003366;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: rgba(0, 102, 204, 0.04);
+  transform: translateX(2px);
+  transition: all 0.2s ease;
+}
+
+/* ======== MESSAGE STYLES ======== */
+.message {
+  color: #28a745;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  padding: 12px;
+  background: rgba(40, 167, 69, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ======== ANIMATION ======== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .departements-container {
+    padding: 1rem;
+  }
+  
+  .add-form {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .add-form input {
+    width: 100%;
+  }
+  
+  .add-form button {
+    width: 100%;
+  }
+  
+  table {
+    font-size: 13px;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .departements-container {
+    padding: 0.5rem;
+  }
+  
+  .add-form {
+    padding: 1rem;
+  }
+  
+  table {
+    font-size: 12px;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+  }
+}

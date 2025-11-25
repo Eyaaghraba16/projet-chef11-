@@ -1,0 +1,184 @@
+/* ======== GLOBAL LAYOUT ======== */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+h2 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 2rem;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* ======== LOADING STYLES ======== */
+.loading {
+  text-align: center;
+  color: #0066cc;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+}
+
+/* ======== TABLE STYLES ======== */
+.rapports-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rapports-table th {
+  background: #003366;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.rapports-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-size: 14px;
+}
+
+.rapports-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.rapports-table tr:hover {
+  background-color: rgba(0, 102, 204, 0.04);
+  transform: translateX(2px);
+  transition: all 0.2s ease;
+}
+
+/* ======== BUTTON STYLES ======== */
+.btn {
+  padding: 8px 16px;
+  margin: 2px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.25s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn.pdf {
+  background: #e74c3c;
+  color: white;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.25);
+}
+
+.btn.pdf:hover {
+  background: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.35);
+}
+
+.btn.csv {
+  background: #28a745;
+  color: white;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.25);
+}
+
+.btn.csv:hover {
+  background: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.35);
+}
+
+/* ======== NO DATA STYLES ======== */
+.no-data {
+  text-align: center;
+  color: #666;
+  margin-top: 2rem;
+  font-style: italic;
+  padding: 2rem;
+  background: rgba(0, 102, 204, 0.03);
+  border-radius: 10px;
+  border: 2px dashed #e2e8f0;
+}
+
+/* ======== ANIMATION ======== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+  
+  .rapports-table {
+    font-size: 13px;
+  }
+  
+  .rapports-table th,
+  .rapports-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin: 1px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0.5rem auto;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .rapports-table {
+    font-size: 12px;
+  }
+  
+  .rapports-table th,
+  .rapports-table td {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  
+  h2 {
+    font-size: 22px;
+  }
+}

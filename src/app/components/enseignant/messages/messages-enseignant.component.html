@@ -1,0 +1,75 @@
+<section class="enseignant-section">
+  <header class="section-header">
+    <div>
+      <p class="kicker">Messagerie interne</p>
+      <h2>Communiquer avec la communauté</h2>
+    </div>
+    <div class="filters">
+      <button 
+        class="filter-btn" 
+        [class.active]="filtre === 'tous'"
+        (click)="filtre = 'tous'">
+        Tous
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="filtre === 'recus'"
+        (click)="filtre = 'recus'">
+        Reçus
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="filtre === 'envoyes'"
+        (click)="filtre = 'envoyes'">
+        Envoyés
+      </button>
+    </div>
+  </header>
+
+  <div class="form-card">
+    <h3>Nouveau message</h3>
+    <form (ngSubmit)="envoyerMessage()" #messageForm="ngForm">
+      <div class="form-grid">
+        <label>
+          Destinataire *
+          <select name="destinataire" [(ngModel)]="form.id_destinataire" required>
+            <option [ngValue]="null">Sélectionner</option>
+            <option *ngFor="let user of utilisateurs" [ngValue]="user.id">
+              {{ user.prenom }} {{ user.nom }} · {{ user.role }}
+            </option>
+          </select>
+        </label>
+        <label>
+          Sujet *
+          <input type="text" name="sujet" [(ngModel)]="form.sujet" required />
+        </label>
+      </div>
+      <label>
+        Message *
+        <textarea name="contenu" rows="4" [(ngModel)]="form.contenu" required></textarea>
+      </label>
+      <button class="btn-primary" type="submit" [disabled]="sending || messageForm.invalid">
+        ✉️ Envoyer
+      </button>
+    </form>
+    <p class="info" *ngIf="messageInfo">{{ messageInfo }}</p>
+  </div>
+
+  <div class="messages-list">
+    <article class="message" *ngFor="let message of getMessagesFiltres()">
+      <header>
+        <div>
+          <p class="sujet">{{ message.sujet }}</p>
+          <p class="meta">
+            De {{ message.expediteur || 'Moi' }} ·
+            À {{ message.destinataire || 'Moi' }} ·
+            {{ message.date_envoi | date:'short' }}
+          </p>
+        </div>
+      </header>
+      <p class="contenu">{{ message.contenu }}</p>
+    </article>
+    <p class="empty" *ngIf="!getMessagesFiltres().length">Aucun message pour ce filtre.</p>
+  </div>
+</section>
+

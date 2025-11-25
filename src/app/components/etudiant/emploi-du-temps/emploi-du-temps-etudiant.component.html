@@ -1,0 +1,46 @@
+<div class="emploi-container">
+  <div class="header-section">
+    <h2>📅 Emploi du Temps</h2>
+    <div class="info-section">
+      <p><strong>Groupe :</strong> {{ groupe }}</p>
+      <p><strong>Semestre :</strong> {{ semestre }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">Chargement de l'emploi du temps...</div>
+
+  <div *ngIf="!loading" class="table-container">
+    <table class="emploi-table">
+      <thead>
+        <tr>
+          <th class="time-column">Heure</th>
+          <th *ngFor="let jour of jours">{{ jour }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let creneau of creneaux">
+          <td class="time-cell">
+            <div class="heure-debut">{{ creneau.debut }}</div>
+            <div class="heure-fin">{{ creneau.fin }}</div>
+          </td>
+          <td *ngFor="let jour of jours" [class.highlight]="getCours(creneau.debut, jour)">
+            <div *ngIf="getCours(creneau.debut, jour); else emptyCell" class="cours-cell">
+              <div class="matiere">{{ getCours(creneau.debut, jour).matiere }}</div>
+              <div class="enseignant">{{ getCours(creneau.debut, jour).enseignant }}</div>
+              <div class="salle">{{ getCours(creneau.debut, jour).salle }}</div>
+            </div>
+            <ng-template #emptyCell>
+              <div class="empty-cell">-</div>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-section">
+    <p class="institution">Institut Supérieur des Études Technologiques de Tozeur</p>
+    <p class="departement">Département Technologies de l'Informatique</p>
+  </div>
+</div>
+

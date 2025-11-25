@@ -1,0 +1,137 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Plateforme de Gestion Universitaire</h1>
+      <div class="user-info">
+        <span class="user-name">{{ userName }}</span>
+        <span class="user-role">{{ currentUser?.role }}</span>
+        <button (click)="logout()" class="btn-logout">Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <h2>Bienvenue, {{ userName }} !</h2>
+    <p class="role-description">Vous êtes connecté en tant que <strong>{{ currentUser?.role }}</strong></p>
+
+    <!-- ETUDIANT -->
+    <div *ngIf="currentUser?.role === 'etudiant'" class="menu-grid">
+      <div class="menu-card" (click)="navigateTo('emploi-du-temps')">
+        <div class="card-icon">📅</div>
+        <h3>Emploi du temps</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('absences')">
+        <div class="card-icon">📋</div>
+        <h3>Absences</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('notes')">
+        <div class="card-icon">📊</div>
+        <h3>Notes</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('notifications')">
+        <div class="card-icon">🔔</div>
+        <h3>Notifications</h3>
+      </div>
+    </div>
+
+    <!-- ENSEIGNANT -->
+    <div *ngIf="currentUser?.role === 'enseignant'" class="menu-grid">
+
+      <div class="menu-card" (click)="navigateTo('emploi-du-temps')">
+        <div class="card-icon">📅</div>
+        <h3>Emploi du temps</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('absences')">
+        <div class="card-icon">📋</div>
+        <h3>Mes absences</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('absences-etudiants')">
+        <div class="card-icon">👨‍🎓</div>
+        <h3>Absences étudiants</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('rattrapages')">
+        <div class="card-icon">🔄</div>
+        <h3>Rattrapages</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('messagerie')">
+        <div class="card-icon">💬</div>
+        <h3>Messagerie</h3>
+      </div>
+    </div>
+
+    <!-- DIRECTEUR -->
+    <div *ngIf="currentUser?.role === 'directeur'" class="menu-grid">
+
+      <div class="menu-card" (click)="navigateTo('emploi-du-temps')">
+        <div class="card-icon">📅</div>
+        <h3>Emploi du temps</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('tableau-de-bord')">
+        <div class="card-icon">📊</div>
+        <h3>Tableau de bord</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('absences')">
+        <div class="card-icon">📋</div>
+        <h3>Absences</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('matieres')">
+        <div class="card-icon">📚</div>
+        <h3>Matières</h3>
+      </div>
+    </div>
+
+    <!-- ADMINISTRATIF -->
+    <div *ngIf="currentUser?.role === 'administratif'" class="menu-grid">
+
+      <div class="menu-card" (click)="navigateTo('departements')">
+        <div class="card-icon">🏢</div>
+        <h3>Départements</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('enseignants')">
+        <div class="card-icon">👨‍🏫</div>
+        <h3>Enseignants</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('etudiants')">
+        <div class="card-icon">👨‍🎓</div>
+        <h3>Étudiants</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('salles')">
+        <div class="card-icon">🚪</div>
+        <h3>Salles</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('matieres')">
+        <div class="card-icon">📚</div>
+        <h3>Matières</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('emploi-du-temps')">
+        <div class="card-icon">📅</div>
+        <h3>Emplois du temps</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('rapports')">
+        <div class="card-icon">📄</div>
+        <h3>Rapports</h3>
+      </div>
+
+      <div class="menu-card" (click)="navigateTo('evenements')">
+        <div class="card-icon">🎉</div>
+        <h3>Événements</h3>
+      </div>
+    </div>
+  </main>
+</div>

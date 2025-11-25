@@ -1,0 +1,76 @@
+<section class="enseignant-section">
+  <header class="section-header">
+    <div>
+      <p class="kicker">Rattrapages</p>
+      <h2>Proposer une séance</h2>
+    </div>
+  </header>
+
+  <div class="form-card">
+    <form (ngSubmit)="proposer()" #rattrapageForm="ngForm">
+      <div class="form-grid">
+        <label>
+          Matière *
+          <select name="id_matiere" [(ngModel)]="form.id_matiere" required>
+            <option [ngValue]="null">Sélectionner</option>
+            <option *ngFor="let matiere of matieres" [ngValue]="matiere.id">
+              {{ matiere.nom }}
+            </option>
+          </select>
+        </label>
+        <label>
+          Salle
+          <select name="id_salle" [(ngModel)]="form.id_salle">
+            <option [ngValue]="null">Non définie</option>
+            <option *ngFor="let salle of salles" [ngValue]="salle.id">
+              {{ salle.nom }}
+            </option>
+          </select>
+        </label>
+        <label>
+          Date *
+          <input type="date" name="date" [(ngModel)]="form.date" required />
+        </label>
+        <label>
+          Heure de début *
+          <input type="time" name="heure_debut" [(ngModel)]="form.heure_debut" required />
+        </label>
+        <label>
+          Heure de fin *
+          <input type="time" name="heure_fin" [(ngModel)]="form.heure_fin" required />
+        </label>
+        <label>
+          Étudiant (optionnel)
+          <input type="number" name="id_etudiant" [(ngModel)]="form.id_etudiant" placeholder="ID étudiant" />
+        </label>
+      </div>
+
+      <button class="btn-primary" type="submit" [disabled]="submitting || rattrapageForm.invalid">
+        ➕ Ajouter
+      </button>
+      <p class="form-message" *ngIf="message">{{ message }}</p>
+    </form>
+  </div>
+
+  <div class="liste-card">
+    <h3>Vos rattrapages planifiés</h3>
+    <div class="rattrapage-item" *ngFor="let r of rattrapages">
+      <div>
+        <p class="titre">{{ r.matiere }}</p>
+        <p class="meta">
+          {{ r.date | date:'longDate' }} ·
+          {{ r.heure_debut | slice:0:5 }} - {{ r.heure_fin | slice:0:5 }}
+        </p>
+        <p class="meta">
+          Salle : {{ r.salle || 'À confirmer' }}
+          <span *ngIf="r.etudiant">· Étudiant : {{ r.etudiant }}</span>
+        </p>
+      </div>
+      <span class="badge" [ngClass]="r.statut">
+        {{ r.statut | titlecase }}
+      </span>
+    </div>
+    <p class="empty" *ngIf="!rattrapages.length">Aucun rattrapage programmé.</p>
+  </div>
+</section>
+

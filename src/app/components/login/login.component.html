@@ -1,0 +1,53 @@
+<div class="login-container">
+
+  <div class="login-card">
+
+    <h1>Connexion</h1>
+    <p class="subtitle">Accédez à votre espace sécurisé</p>
+
+    <form (ngSubmit)="onLogin()">
+
+      <!-- Champ login / email -->
+      <div class="form-group">
+        <label for="loginOrEmail">Login ou Email</label>
+        <input
+          type="text"
+          id="loginOrEmail"
+          [(ngModel)]="loginOrEmail"
+          name="loginOrEmail"
+          placeholder="Entrez votre login ou email"
+          required>
+      </div>
+
+      <!-- Champ mot de passe -->
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Entrez votre mot de passe"
+          required>
+      </div>
+
+      <!-- Message d'erreur -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Bouton -->
+      <button type="submit" class="btn-primary" [disabled]="loading">
+        {{ loading ? 'Connexion...' : 'Se connecter' }}
+      </button>
+    </form>
+
+    <!-- Lien inscription -->
+    <div class="register-link">
+      <p>Vous n'avez pas de compte ?</p>
+      <button class="btn-secondary" (click)="goToRegister()">S'inscrire</button>
+    </div>
+
+  </div>
+
+</div>

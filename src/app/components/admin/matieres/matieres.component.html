@@ -1,0 +1,50 @@
+<div class="container">
+
+  <h2>Gestion des Matières</h2>
+
+  <p class="message">{{ message }}</p>
+
+  <form (ngSubmit)="ajouter()">
+    <input type="text" placeholder="Nom *" [(ngModel)]="newMatiere.nom" name="nom" required />
+    <input type="text" placeholder="Code *" [(ngModel)]="newMatiere.code" name="code" required />
+    <input type="number" placeholder="Coefficient" [(ngModel)]="newMatiere.coefficient" name="coefficient" min="1" step="0.1" />
+    <select [(ngModel)]="newMatiere.id_niveau" name="id_niveau" required>
+      <option [value]="null">Sélectionner un niveau *</option>
+      <option *ngFor="let n of niveaux" [value]="n.id">{{ n.nom }}</option>
+    </select>
+    <select [(ngModel)]="newMatiere.id_enseignant" name="id_enseignant">
+      <option [value]="null">Sélectionner un enseignant (optionnel)</option>
+      <option *ngFor="let e of enseignants" [value]="e.id">{{ e.nom }} {{ e.prenom }}</option>
+    </select>
+    <input type="number" placeholder="Nombre d'heures" [(ngModel)]="newMatiere.nombre_heures" name="nombre_heures" min="0" />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Code</th>
+        <th>Coefficient</th>
+        <th>Niveau</th>
+        <th>Heures</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let m of matieres">
+        <td>{{ m.nom }}</td>
+        <td>{{ m.code }}</td>
+        <td>{{ m.coefficient || 1 }}</td>
+        <td>{{ m.niveau || '-' }}</td>
+        <td>{{ m.nombre_heures || 0 }}</td>
+        <td>
+          <button class="delete" (click)="supprimer(m.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

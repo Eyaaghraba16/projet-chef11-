@@ -1,0 +1,147 @@
+/* ======== GLOBAL LAYOUT ======== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #003366, #0066cc);
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ======== CARD ======== */
+.login-card {
+  background: #ffffff;
+  width: 450px;
+  padding: 35px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.login-card h1 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 5px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+/* ======== FORM GROUPS ======== */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #003366;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+/* Focus effet */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 6px rgba(0, 102, 204, 0.3);
+}
+
+/* ======== BUTTON ======== */
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  background-color: #0066cc;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #004c99;
+}
+
+.btn-primary:disabled {
+  background-color: #7faeda;
+  cursor: not-allowed;
+}
+
+/* ======== MESSAGES ======== */
+.error-message {
+  background: #ffdddd;
+  color: #d10000;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-left: 4px solid #d10000;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.success-message {
+  background: #ddffdd;
+  color: #1f8a1f;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-left: 4px solid #1f8a1f;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ======== LINK ======== */
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.register-link a {
+  color: #0066cc;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* ======== ANIMATION ======== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+    padding: 25px 20px;
+  }
+}

@@ -1,0 +1,42 @@
+<section class="enseignant-section">
+  <header class="section-header">
+    <div>
+      <p class="kicker">Mes cours planifiés</p>
+      <h2>Emploi du temps enseignant</h2>
+    </div>
+    <button class="btn-refresh" (click)="chargerEmplois()" [disabled]="loading">
+      🔄 Actualiser
+    </button>
+  </header>
+
+  <div *ngIf="loading" class="state state--loading">
+    Chargement de vos séances...
+  </div>
+
+  <div *ngIf="!loading && message" class="state state--info">
+    {{ message }}
+  </div>
+
+  <div class="emploi-grid" *ngIf="!loading && !message">
+    <article class="jour-card" *ngFor="let entry of emplois | keyvalue">
+      <h3>{{ entry.key }}</h3>
+      <ul>
+        <li *ngFor="let seance of entry.value">
+          <div class="horaire">
+            {{ seance.heure_debut | slice:0:5 }} - {{ seance.heure_fin | slice:0:5 }}
+          </div>
+          <div class="details">
+            <p class="matiere">{{ seance.matiere }}</p>
+            <p class="meta">
+              Groupe {{ seance.groupe }} · Salle {{ seance.salle }}
+            </p>
+            <span class="badge" [ngClass]="seance.statut">
+              {{ seance.statut | titlecase }}
+            </span>
+          </div>
+        </li>
+      </ul>
+    </article>
+  </div>
+</section>
+

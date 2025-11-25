@@ -1,0 +1,65 @@
+<section class="enseignant-section">
+  <header class="section-header">
+    <div>
+      <p class="kicker">Gestion personnelle</p>
+      <h2>Mes absences</h2>
+    </div>
+  </header>
+
+  <div class="form-card">
+    <h3>Déclarer une absence</h3>
+    <form (ngSubmit)="declarerAbsence()" #absenceForm="ngForm">
+      <div class="form-grid">
+        <label>
+          Date de début *
+          <input type="date" [(ngModel)]="form.date_debut" name="date_debut" required />
+        </label>
+        <label>
+          Date de fin *
+          <input type="date" [(ngModel)]="form.date_fin" name="date_fin" required />
+        </label>
+        <label>
+          Heure de début
+          <input type="time" [(ngModel)]="form.heure_debut" name="heure_debut" />
+        </label>
+        <label>
+          Heure de fin
+          <input type="time" [(ngModel)]="form.heure_fin" name="heure_fin" />
+        </label>
+      </div>
+      <label>
+        Motif *
+        <textarea [(ngModel)]="form.motif" name="motif" required rows="3" placeholder="Expliquez votre indisponibilité"></textarea>
+      </label>
+      <button class="btn-primary" type="submit" [disabled]="submitting || absenceForm.invalid">
+        ✅ Envoyer la demande
+      </button>
+      <p class="form-message" *ngIf="message">{{ message }}</p>
+    </form>
+  </div>
+
+  <div class="absences-list">
+    <h3>Historique</h3>
+
+    <div *ngIf="loading" class="state state--loading">Chargement...</div>
+    <div *ngIf="!loading && !absences.length" class="state state--info">{{ message }}</div>
+
+    <div class="absence-item" *ngFor="let absence of absences">
+      <div>
+        <p class="dates">
+          Du {{ absence.date_debut | date:'longDate' }}
+          au {{ absence.date_fin | date:'longDate' }}
+        </p>
+        <p class="motif">{{ absence.motif }}</p>
+        <p class="meta">
+          Durée estimée : {{ absence.duree_heures || 0 }} h
+          <span *ngIf="absence.commentaire">· Commentaire : {{ absence.commentaire }}</span>
+        </p>
+      </div>
+      <span [class]="getBadgeClass(absence.statut)">
+        {{ absence.statut | titlecase }}
+      </span>
+    </div>
+  </div>
+</section>
+

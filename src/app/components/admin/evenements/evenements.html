@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>Gestion des Événements Institutionnels</h2>
+
+  <p class="message" *ngIf="message">{{ message }}</p>
+
+  <form (ngSubmit)="ajouter()" class="mb-3">
+    <input type="text" [(ngModel)]="newEvenement.titre" name="titre" placeholder="Titre *" required />
+    <textarea [(ngModel)]="newEvenement.description" name="description" placeholder="Description"></textarea>
+    <select [(ngModel)]="newEvenement.type" name="type">
+      <option value="public">Public</option>
+      <option value="prive">Privé</option>
+      <option value="fermeture">Fermeture</option>
+      <option value="conference">Conférence</option>
+      <option value="autre">Autre</option>
+    </select>
+    <input type="datetime-local" [(ngModel)]="newEvenement.date_debut" name="date_debut" placeholder="Date de début *" required />
+    <input type="datetime-local" [(ngModel)]="newEvenement.date_fin" name="date_fin" placeholder="Date de fin (optionnel)" />
+    <input type="text" [(ngModel)]="newEvenement.lieu" name="lieu" placeholder="Lieu (optionnel)" />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <table class="table" *ngIf="evenements.length > 0">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Type</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Lieu</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let evt of evenements">
+        <td>{{ evt.titre }}</td>
+        <td>{{ evt.type }}</td>
+        <td>{{ evt.date_debut | date:'short' }}</td>
+        <td>{{ evt.date_fin ? (evt.date_fin | date:'short') : '-' }}</td>
+        <td>{{ evt.lieu || '-' }}</td>
+        <td>{{ evt.description || '-' }}</td>
+        <td>
+          <button (click)="supprimer(evt.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="evenements.length === 0">Aucun événement pour le moment.</div>
+</div>

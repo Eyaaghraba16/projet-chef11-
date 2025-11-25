@@ -1,0 +1,70 @@
+<section class="enseignant-section">
+  <header class="section-header">
+    <div>
+      <p class="kicker">Suivi pédagogique</p>
+      <h2>Absences des étudiants</h2>
+    </div>
+    <div class="filters">
+      <label>
+        Statut
+        <select [(ngModel)]="filtreStatut" (change)="chargerAbsences()">
+          <option *ngFor="let s of statuts" [value]="s.value">{{ s.label }}</option>
+        </select>
+      </label>
+      <button class="btn-refresh" (click)="chargerAbsences()" [disabled]="loading">
+        🔄 Actualiser
+      </button>
+    </div>
+  </header>
+
+  <div *ngIf="actionMessage" class="action-message">
+    {{ actionMessage }}
+  </div>
+
+  <div class="table-wrapper" *ngIf="!loading; else loadingTpl">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Étudiant</th>
+          <th>Matière</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let absence of absences">
+          <td>
+            {{ absence.date_absence | date:'dd/MM/yyyy' }}
+            <div class="motif" *ngIf="absence.motif">Motif : {{ absence.motif }}</div>
+          </td>
+          <td>{{ absence.etudiant }}</td>
+          <td>{{ absence.matiere }}</td>
+          <td>
+            <span [class]="getBadgeClass(absence.statut)">
+              {{ absence.statut | titlecase }}
+            </span>
+          </td>
+          <td class="actions">
+            <button class="btn" (click)="mettreAJourStatut(absence, 'justifie')">
+              ✅ Valider
+            </button>
+            <button class="btn danger" (click)="mettreAJourStatut(absence, 'refuse')">
+              ❌ Refuser
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="absences.length === 0">
+          <td colspan="5" class="empty">
+            Aucune absence à afficher.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #loadingTpl>
+    <div class="state state--loading">Chargement des absences...</div>
+  </ng-template>
+</section>
+

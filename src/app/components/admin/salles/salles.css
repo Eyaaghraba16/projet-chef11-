@@ -1,0 +1,33 @@
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input, button {
+  padding: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.delete {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+}

@@ -1,0 +1,266 @@
+/* ======== GLOBAL LAYOUT ======== */
+.enseignant-section {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.kicker {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: #003366;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ======== CARD STYLES ======== */
+.form-card,
+.liste-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 102, 204, 0.1);
+  animation: fadeIn 0.6s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before,
+.liste-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #0066cc, #003366);
+}
+
+/* ======== FORM STYLES ======== */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  gap: 0.5rem;
+  color: #003366;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input,
+select {
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: 0.2s ease-in-out;
+  background: #ffffff;
+}
+
+input:focus,
+select:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 6px rgba(0, 102, 204, 0.3);
+}
+
+/* ======== BUTTON STYLES ======== */
+.btn-primary {
+  border: none;
+  background: #0066cc;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.25s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  background: #004c99;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 102, 204, 0.35);
+}
+
+/* ======== FORM MESSAGE ======== */
+.form-message {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+  padding: 12px;
+  background: rgba(0, 102, 204, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #0066cc;
+}
+
+/* ======== RATTRAPAGE ITEM STYLES ======== */
+.rattrapage-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease-in-out;
+  background: #ffffff;
+}
+
+.rattrapage-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #0066cc;
+}
+
+.titre {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #003366;
+}
+
+.meta {
+  margin: 0.5rem 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ======== BADGE STYLES ======== */
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.planifie {
+  background: rgba(0, 102, 204, 0.15);
+  color: #0066cc;
+}
+
+.badge.confirme {
+  background: rgba(40, 167, 69, 0.15);
+  color: #28a745;
+}
+
+.badge.annule {
+  background: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+}
+
+/* ======== EMPTY STATE ======== */
+.empty {
+  margin: 0;
+  color: #666;
+  text-align: center;
+  padding: 3rem 2rem;
+  font-style: italic;
+  background: rgba(0, 102, 204, 0.03);
+  border-radius: 10px;
+  border: 2px dashed #e2e8f0;
+}
+
+/* ======== ANIMATION ======== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .enseignant-section {
+    padding: 1.5rem;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .form-card,
+  .liste-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .rattrapage-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .enseignant-section {
+    padding: 1rem;
+  }
+  
+  .form-card,
+  .liste-card {
+    padding: 1.25rem;
+  }
+  
+  .rattrapage-item {
+    padding: 1rem;
+  }
+  
+  input,
+  select {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .titre {
+    font-size: 1rem;
+  }
+  
+  .badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}

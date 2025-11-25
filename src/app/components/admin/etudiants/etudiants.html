@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>Tableau de Bord Étudiant</h2>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading">Chargement des données...</div>
+
+  <!-- Emploi du temps -->
+  <section *ngIf="!loading">
+    <h3>Emploi du Temps</h3>
+    <ul class="list">
+      <li *ngFor="let cours of emploiTemps">
+        <strong>{{ cours.jour }}</strong> - {{ cours.heure }} : {{ cours.matiere }} ({{ cours.salle }})
+      </li>
+    </ul>
+    <div *ngIf="emploiTemps.length === 0" class="no-data">Aucun cours prévu.</div>
+  </section>
+
+  <!-- Absences -->
+  <section *ngIf="!loading">
+    <h3>Absences</h3>
+    <ul class="list">
+      <li *ngFor="let abs of absences">
+        {{ abs.date }} - {{ abs.matiere }}
+        <button class="btn excuser" (click)="demanderExcuse(abs.id)">Demander Excuse</button>
+      </li>
+    </ul>
+    <div *ngIf="absences.length === 0" class="no-data">Aucune absence enregistrée.</div>
+  </section>
+
+  <!-- Notifications -->
+  <section *ngIf="!loading">
+    <h3>Notifications</h3>
+    <ul class="list">
+      <li *ngFor="let notif of notifications">
+        {{ notif.message }} ({{ notif.date | date:'short' }})
+      </li>
+    </ul>
+    <div *ngIf="notifications.length === 0" class="no-data">Aucune notification.</div>
+  </section>
+
+  <!-- Notes et statistiques -->
+  <section *ngIf="!loading">
+    <h3>Notes et Statistiques</h3>
+    <ul class="list">
+      <li *ngFor="let note of notes">
+        {{ note.matiere }} : {{ note.note }}/20
+      </li>
+    </ul>
+    <div *ngIf="notes.length === 0" class="no-data">Aucune note disponible.</div>
+  </section>
+</div>

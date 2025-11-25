@@ -1,0 +1,130 @@
+﻿/* ======== GLOBAL LAYOUT ======== */
+.admin-login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #003366, #0066cc);
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+.admin-login-container h1 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.admin-login-container > p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 30px;
+  font-size: 16px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* ======== FORM CARD ======== */
+.admin-login-container form {
+  background: #ffffff;
+  width: 420px;
+  padding: 35px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
+  text-align: left;
+}
+
+/* ======== FORM GROUP ======== */
+.admin-login-container form label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #003366;
+  display: block;
+  font-size: 14px;
+}
+
+.admin-login-container form input {
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #c7c7c7;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.admin-login-container form input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 6px rgba(0, 102, 204, 0.3);
+}
+
+/* ======== BUTTON ======== */
+.admin-login-container form button {
+  width: 100%;
+  padding: 13px;
+  background-color: #0066cc;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  margin-top: 10px;
+}
+
+.admin-login-container form button:hover {
+  background-color: #004c99;
+}
+
+.admin-login-container form button:disabled {
+  background-color: #7faeda;
+  cursor: not-allowed;
+}
+
+/* ======== ERROR MESSAGE ======== */
+.admin-login-container form .error {
+  background: #ffdddd;
+  color: #d10000;
+  padding: 12px;
+  margin-top: 15px;
+  border-left: 4px solid #d10000;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ======== ANIMATION ======== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 480px) {
+  .admin-login-container form {
+    width: 100%;
+    padding: 25px 20px;
+  }
+  
+  .admin-login-container h1 {
+    font-size: 28px;
+  }
+  
+  .admin-login-container > p {
+    font-size: 14px;
+    padding: 0 15px;
+  }
+}
